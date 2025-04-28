@@ -32,41 +32,83 @@
 <body>
 
 
+    <main class="container">
+        <div class="contentBox">
+            <!-- side bar -->
+             <div class="sidebar">
+                <div class="progress active">
+                    <div class="progress__range">1</div>
+                    <div class="progress__info">
+                        <div class="progress__step">Step 1</div>
+                        <div class="progress__name">Your info</div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress__range">2</div>
+                    <div class="progress__info">
+                        <div class="progress__step">Step 2</div>
+                        <div class="progress__name">Select plan</div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress__range">3</div>
+                    <div class="progress__info">
+                        <div class="progress__step">Step 3</div>
+                        <div class="progress__name">Add-ons</div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress__range">4</div>
+                    <div class="progress__info">
+                        <div class="progress__step">Step 4</div>
+                        <div class="progress__name">Summary</div>
+                    </div>
+                </div>
+             </div>
+             <!-- from -->
+              <form action="index.html" method="post" id="multistepform">
+                <div class="stepBox">
+                    <!-- step 1 -->
+                     <div class="step" id="step1">
+                        <h1>Personal info</h1>
+                        <p class="step__text">Please provide your name, email address, and phone number.</p>
+                        <div class="fieldGroup">
+                            <div class="inputBox">
+                                <div class="labelLine">
+                                    <label for="name">Name</label>
+                                    <span class="invalid">This field is required</span>
+                                </div>
+                                <div class="inputLine">
+                                    <input type="text" id="name" name="name" placeholder="e.g. Stephen King" >
+                                </div>
+                            </div>
+                            <div class="inputBox">
+                                <div class="labelLine">
+                                    <label for="email">Email Address</label>
+                                    <span class="invalid">This field is required</span>
+                                </div>
+                                <div class="inputLine">
+                                    <input type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com" >
+                                </div>
+                            </div>
+                            <div class="inputBox">
+                                <div class="labelLine">
+                                    <label for="phone">Phone Number</label>
+                                    <span class="invalid">This field is required</span>
+                                </div>
+                                <div class="inputLine">
+                                    <input type="tel" id="phone" name="phone" placeholder="e.g. +1 234 567 890" >
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+              </form>
+        </div>
+    </main>
+
     <script src="js/script.js"></script>
 
-    <!-- Sidebar start -->
-
-    Step 1
-    Your info
-
-    Step 2
-    Select plan
-
-    Step 3
-    Add-ons
-
-    Step 4
-    Summary
-
-    <!-- Sidebar end -->
-
-    <!-- Step 1 start -->
-
-    Personal info
-    Please provide your name, email address, and phone number.
-
-    Name
-    e.g. Stephen King
-
-    Email Address
-    e.g. stephenking@lorem.com
-
-    Phone Number
-    e.g. +1 234 567 890
-
-    Next Step
-
-    <!-- Step 1 end -->
 
     <!-- Step 2 start -->
 
