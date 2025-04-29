@@ -1,1 +1,673 @@
-/*# sourceMappingURL=style.css.map */
+:root {
+  --marineBlue: hsl(213, 96%, 18%);
+  --purplishBlue: hsl(243, 100%, 62%);
+  --pastelBlue: hsl(228, 100%, 84%);
+  --lightBlue: hsl(206, 94%, 87%);
+  --strawberryRed: hsl(354, 84%, 57%);
+  --coolGray: hsl(231, 11%, 63%);
+  --lightGray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+
+html,
+button,
+input {
+  font: 400 16px "Ubuntu", sans-serif;
+}
+
+body {
+  background-color: var(--magnolia);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.contentBox {
+  background-color: var(--white);
+  display: flex;
+  gap: 100px;
+  width: 100%;
+  max-width: 940px;
+  height: 600px;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 10px 50px 6px rgba(214, 217, 230, 0.4);
+}
+
+.sidebar {
+  background: url("../assets/images/bg-sidebar-desktop.svg") top left no-repeat;
+  width: 100%;
+  max-width: 274px;
+  padding: 38px 32px;
+}
+.sidebar .progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 29px;
+}
+.sidebar .progress__range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--lightBlue);
+  border-radius: 50%;
+  color: var(--lightBlue);
+}
+.sidebar .progress__info {
+  text-transform: uppercase;
+}
+.sidebar .progress__step {
+  font-size: 0.825rem;
+  color: var(--pastelBlue);
+}
+.sidebar .progress__name {
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--white);
+}
+.sidebar .progress.active .progress__range {
+  background-color: var(--lightBlue);
+  color: var(--marineBlue);
+}
+
+#multistepForm {
+  flex: 1;
+  display: flex;
+  padding: 40px 84px 16px 0;
+}
+#multistepForm h1,
+#multistepForm .stepTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--marineBlue);
+}
+#multistepForm .stepBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#multistepForm .step {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+#multistepForm .step__text {
+  margin: 12px 0 40px;
+  color: var(--coolGray);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.fieldGroup .labelLine {
+  display: flex;
+  justify-content: space-between;
+}
+.fieldGroup .labelLine label {
+  font-size: 14px;
+}
+.fieldGroup .labelLine .invalid {
+  display: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--strawberryRed);
+}
+.fieldGroup .labelLine .invalid.show {
+  display: inline;
+}
+.fieldGroup .inputLine {
+  margin: 8px 0 0;
+}
+.fieldGroup .inputLine input {
+  background-color: var(--white);
+  font-weight: 500;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--lightGray);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.fieldGroup .inputLine input::-moz-placeholder {
+  color: var(--coolGray);
+}
+.fieldGroup .inputLine input::placeholder {
+  color: var(--coolGray);
+}
+.fieldGroup .inputLine input:hover, .fieldGroup .inputLine input:focus {
+  border-color: var(--pastelBlue);
+}
+.fieldGroup .inputLine input.invalid {
+  border-color: var(--strawberryRed);
+}
+
+#monthlyOption,
+#yearlyOption {
+  display: none;
+}
+
+.planSelection {
+  gap: 20px;
+}
+.planSelection label {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+}
+.planSelection label .card__container {
+  display: block;
+  border: 1px solid var(--coolGray);
+  padding: 20px 14px 16px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+.planSelection label .card__container:hover {
+  border-color: var(--marineBlue);
+}
+.planSelection label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.planSelection label input:checked + .card__container {
+  background-color: var(--alabaster);
+  border-color: var(--marineBlue);
+}
+.planSelection label .card__content {
+  display: flex;
+  flex-direction: column;
+}
+.planSelection label .card__content .image {
+  margin-bottom: 40px;
+}
+.planSelection label .card__content .card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--marineBlue);
+}
+.planSelection label .card__content .card__price {
+  font-size: 14px;
+  margin-top: 5px;
+  color: var(--coolGray);
+}
+.planSelection label .card__content .monthFree {
+  font-size: 12px;
+  margin: 8px 0 4px;
+  color: var(--marineBlue);
+}
+
+.checkDuration {
+  background-color: var(--alabaster);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 23px;
+  margin-top: 32px;
+  padding: 14px 12px 14px 0;
+  border-radius: 8px;
+}
+
+.duration {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--coolGray);
+}
+
+.durationSlider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.durationSlider input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.durationSlider .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--marineBlue);
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.durationSlider .slider::before {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--white);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+.durationSlider input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.addOns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.addOns .addonBox__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--coolGray);
+  border-radius: 8px;
+  transition: border 0.3s ease;
+  cursor: pointer;
+}
+.addOns .addonBox__wrapper:hover {
+  border-color: var(--purplishBlue);
+}
+.addOns .addonBox__text {
+  flex: 1;
+}
+.addOns .addonBox__service {
+  font-weight: 500;
+  color: var(--marineBlue);
+}
+.addOns .addonBox__p {
+  font-size: 14px;
+  margin-top: 6px;
+  color: var(--coolGray);
+}
+.addOns .addonBox__price {
+  font-size: 14px;
+  color: var(--purplishBlue);
+}
+.addOns input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.addOns .checkmark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--coolGray);
+  border-radius: 4px;
+  transition: border 0.3s ease;
+}
+.addOns:hover input ~ .checkmark {
+  border: 1px solid var(--lightGray);
+}
+.addOns input:checked ~ .addonBox__wrapper .checkmark {
+  background-color: var(--purplishBlue);
+  border: 1px solid var(--purplishBlue);
+}
+.addOns input:checked ~ .addonBox__wrapper {
+  border-color: var(--purplishBlue);
+}
+.addOns .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.addOns input:checked ~ .addonBox__wrapper .checkmark::after {
+  display: block;
+}
+.addOns .checkmark::after {
+  left: 6px;
+  top: 2px;
+  width: 7px;
+  height: 11px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.summary {
+  background-color: var(--magnolia);
+  padding: 22px 24px 24px;
+  border-radius: 10px;
+}
+.summary .selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+.summary .selection__name {
+  font-weight: 700;
+  color: var(--marineBlue);
+}
+.summary .selection__change {
+  font-size: 14px;
+  margin-top: 5px;
+  text-decoration: underline;
+  color: var(--coolGray);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.summary .selection__change:hover {
+  color: var(--purplishBlue);
+}
+.summary .selection__price {
+  font-weight: 700;
+}
+.summary .optionBox {
+  border-top: 1px solid var(--coolGray);
+}
+.summary .optionBox .option {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.summary .optionBox .option__name, .summary .optionBox .option__price {
+  font-size: 14px;
+}
+.summary .optionBox .option__name {
+  color: var(--coolGray);
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.totalPrice__name {
+  font-size: 14px;
+  color: var(--coolGray);
+}
+.totalPrice__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--purplishBlue);
+}
+
+.buttonGroup {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#next {
+  background-color: var(--marineBlue);
+  font-size: 16px;
+  width: 124px;
+  padding: 15px 0;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#next:hover {
+  opacity: 0.85;
+}
+
+#prev {
+  background-color: transparent;
+  font-weight: 500;
+  border: 0;
+  color: var(--coolGray);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#prev:hover {
+  color: var(--marineBlue);
+}
+
+#confirm {
+  background-color: var(--purplishBlue);
+  font-size: 16px;
+  width: 124px;
+  padding: 15px 0;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#confirm:hover {
+  background-color: var(--pastelBlue);
+}
+
+.confirmation {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 84px;
+}
+.confirmation__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.confirmation__image {
+  margin-bottom: 8px;
+}
+.confirmation__image img {
+  width: 100%;
+}
+.confirmation__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--marineBlue);
+}
+.confirmation__text {
+  color: var(--coolGray);
+  text-align: center;
+  line-height: 160%;
+}
+
+@media (max-width: 970px) {
+  .contentBox {
+    gap: 50px;
+  }
+  #multistepForm {
+    padding-right: 50px;
+  }
+  .confirmation {
+    margin-right: 50px;
+  }
+}
+@media (max-width: 800px) {
+  .contentBox {
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .sidebar {
+    background: url("../assets/images/bg-sidebar-mobile.svg") top left no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    max-width: 100%;
+    height: 172px;
+    padding: 32px 0;
+  }
+  .sidebar .progress {
+    align-items: flex-start;
+  }
+  .sidebar .progress__info {
+    display: none;
+  }
+  #multistepForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+  #multistepForm .stepBox {
+    align-items: center;
+  }
+  #multistepForm .step {
+    background-color: var(--white);
+    max-width: 343px;
+    margin: -74px 16px 0;
+    padding: 34px 24px 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px 6px hsla(229, 24%, 87%, 0.4);
+  }
+  #multistepForm .step h1,
+  #multistepForm .step .stepTitle {
+    font-size: 24px;
+  }
+  #multistepForm .step .step__text {
+    margin: 8px 0 24px;
+    line-height: 150%;
+  }
+  .fieldGroup {
+    gap: 15px;
+  }
+  .fieldGroup .labelLine label {
+    font-size: 12px;
+  }
+  .fieldGroup .labelLine .invalid {
+    font-size: 14px;
+  }
+  .fieldGroup .inputLine {
+    margin: 4px 0 0;
+  }
+  .fieldGroup .inputLine input {
+    font-size: 15px;
+    padding: 11px 16px;
+  }
+  #monthlyOption,
+  #yearlyOption {
+    flex-direction: column;
+  }
+  .planSelection {
+    gap: 12px;
+  }
+  .planSelection label .card__container {
+    padding: 16px 14px;
+  }
+  .planSelection label .card__content {
+    flex-direction: row;
+    gap: 14px;
+  }
+  .planSelection label .card__content .image {
+    margin-bottom: 0;
+  }
+  .planSelection label .card__content .card__price {
+    margin-top: 6px;
+  }
+  .checkDuration {
+    margin-top: 24px;
+  }
+  .addOns {
+    gap: 13px;
+  }
+  .addOns .addonBox__wrapper {
+    gap: 16px;
+    padding: 12px 15px;
+  }
+  .addOns .addonBox__service {
+    font-size: 13.5px;
+  }
+  .addOns .addonBox__p {
+    font-size: 12px;
+  }
+  .addOns .addonBox__price {
+    font-size: 12px;
+  }
+  .summary {
+    padding: 20px 15px;
+  }
+  .summary .selection {
+    padding-bottom: 12px;
+  }
+  .summary .selection__name {
+    font-size: 14px;
+  }
+  .summary .selection__change {
+    margin-top: 2px;
+  }
+  .summary .optionBox .option {
+    margin-top: 16px;
+  }
+  .totalPrice {
+    padding: 20px 16px 4px;
+  }
+  .totalPrice__price {
+    font-size: 16px;
+  }
+  .buttonGroup {
+    background-color: var(--white);
+    padding: 16px;
+    width: 100%;
+  }
+  #next,
+  #confirm {
+    font-size: 14px;
+    width: 97px;
+    padding: 12px 0;
+    border-radius: 4px;
+  }
+  #prev {
+    font-size: 14px;
+  }
+  .confirmation {
+    background-color: var(--white);
+    max-width: 343px;
+    height: 400px;
+    margin: -74px 16px 0;
+    padding: 34px 24px 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px 6px hsla(229, 24%, 87%, 0.4);
+  }
+  .confirmation__content {
+    max-width: 343px;
+    gap: 10px;
+  }
+  .confirmation__image {
+    max-width: 56px;
+  }
+  .confirmation__title {
+    font-size: 24px;
+  }
+}/*# sourceMappingURL=style.css.map */

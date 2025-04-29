@@ -1,0 +1,828 @@
+:root {
+  --marineBlue: hsl(213, 96%, 18%);
+  --purplishBlue: hsl(243, 100%, 62%);
+  --pastelBlue: hsl(228, 100%, 84%);
+  --lightBlue: hsl(206, 94%, 87%);
+  --strawberryRed: hsl(354, 84%, 57%);
+  --coolGray: hsl(231, 11%, 63%);
+  --lightGray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+
+html,
+button,
+input {
+  font: 400 16px "Ubuntu", sans-serif;
+}
+
+body {
+  background-color: var(--magnolia);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.contentBox {
+  background-color: var(--white);
+  display: flex;
+  gap: 100px;
+  width: 100%;
+  max-width: 940px;
+  height: 600px;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 10px 50px 6px rgba(214, 217, 230, 0.4);
+}
+
+// -------------------------- SIDEBAR --------------------------
+
+.sidebar {
+  background: url("../assets/images/bg-sidebar-desktop.svg") top left no-repeat;
+  width: 100%;
+  max-width: 274px;
+  padding: 38px 32px;
+
+  .progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 29px;
+
+    &__range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--lightBlue);
+      border-radius: 50%;
+      color: var(--lightBlue);
+    }
+
+    &__info {
+      text-transform: uppercase;
+    }
+
+    &__step {
+      font-size: 0.825rem;
+      color: var(--pastelBlue);
+    }
+
+    &__name {
+      font-weight: 700;
+      margin-top: 4px;
+      color: var(--white);
+    }
+
+    &.active {
+      .progress__range {
+        background-color: var(--lightBlue);
+        color: var(--marineBlue);
+      }
+    }
+  }
+}
+
+// -------------------------- FORM --------------------------
+
+#multistepForm {
+  flex: 1;
+  display: flex;
+  padding: 40px 84px 16px 0;
+
+  h1,
+  .stepTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--marineBlue);
+  }
+
+  .stepBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .step {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+
+    &__text {
+      margin: 12px 0 40px;
+      color: var(--coolGray);
+    }
+  }
+}
+
+// ---------------- STEP 1 --------------------------
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .labelLine {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font-size: 14px;
+    }
+
+    .invalid {
+      display: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--strawberryRed);
+
+      &.show {
+        display: inline;
+      }
+    }
+  }
+
+  .inputLine {
+    margin: 8px 0 0;
+
+    input {
+      background-color: var(--white);
+      font-weight: 500;
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--lightGray);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &::placeholder {
+        color: var(--coolGray);
+      }
+
+      &:hover,
+      &:focus {
+        border-color: var(--pastelBlue);
+      }
+
+      &.invalid {
+        border-color: var(--strawberryRed);
+      }
+    }
+  }
+}
+
+// ---------------- STEP 2 --------------------------
+
+#monthlyOption,
+#yearlyOption {
+  display: none;
+}
+
+.planSelection {
+  gap: 20px;
+
+  label {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+
+    .card__container {
+      display: block;
+      border: 1px solid var(--coolGray);
+      padding: 20px 14px 16px;
+      border-radius: 8px;
+      transition: 0.3s ease;
+
+      &:hover {
+        border-color: var(--marineBlue);
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked + .card__container {
+        background-color: var(--alabaster);
+        border-color: var(--marineBlue);
+      }
+    }
+
+    .card__content {
+      display: flex;
+      flex-direction: column;
+
+      .image {
+        margin-bottom: 40px;
+      }
+
+      .card__title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--marineBlue);
+      }
+
+      .card__price {
+        font-size: 14px;
+        margin-top: 5px;
+        color: var(--coolGray);
+      }
+
+      .monthFree {
+        font-size: 12px;
+        margin: 8px 0 4px;
+        color: var(--marineBlue);
+      }
+    }
+  }
+}
+
+// -------------------------- SLIDER --------------------------
+
+.checkDuration {
+  background-color: var(--alabaster);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 23px;
+  margin-top: 32px;
+  padding: 14px 12px 14px 0;
+  border-radius: 8px;
+}
+
+.duration {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--coolGray);
+}
+
+.durationSlider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--marineBlue);
+    border-radius: 10px;
+    transition: 0.3s ease;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 12px;
+      height: 12px;
+      left: 4px;
+      bottom: 4px;
+      background-color: var(--white);
+      border-radius: 50%;
+      transition: 0.3s ease;
+    }
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+}
+
+// -------------------------- STEP 3 --------------------------
+
+.addOns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .addonBox {
+    &__wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 22px;
+      border: 1px solid var(--coolGray);
+      border-radius: 8px;
+      transition: border 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--purplishBlue);
+      }
+    }
+
+    &__text {
+      flex: 1;
+    }
+
+    &__service {
+      font-weight: 500;
+      color: var(--marineBlue);
+    }
+
+    &__p {
+      font-size: 14px;
+      margin-top: 6px;
+      color: var(--coolGray);
+    }
+
+    &__price {
+      font-size: 14px;
+      color: var(--purplishBlue);
+    }
+  }
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--coolGray);
+    border-radius: 4px;
+    transition: border 0.3s ease;
+  }
+
+  &:hover input ~ .checkmark {
+    border: 1px solid var(--lightGray);
+  }
+
+  input:checked ~ .addonBox__wrapper .checkmark {
+    background-color: var(--purplishBlue);
+    border: 1px solid var(--purplishBlue);
+  }
+
+  input:checked ~ .addonBox__wrapper {
+    border-color: var(--purplishBlue);
+  }
+
+  .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  input:checked ~ .addonBox__wrapper .checkmark::after {
+    display: block;
+  }
+
+  .checkmark::after {
+    left: 6px;
+    top: 2px;
+    width: 7px;
+    height: 11px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}
+
+// -------------------------- STEP 4 --------------------------
+
+.summary {
+  background-color: var(--magnolia);
+  padding: 22px 24px 24px;
+  border-radius: 10px;
+
+  .selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+
+    &__name {
+      font-weight: 700;
+      color: var(--marineBlue);
+    }
+
+    &__change {
+      font-size: 14px;
+      margin-top: 5px;
+      text-decoration: underline;
+      color: var(--coolGray);
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--purplishBlue);
+      }
+    }
+
+    &__price {
+      font-weight: 700;
+    }
+  }
+
+  .optionBox {
+    border-top: 1px solid var(--coolGray);
+
+    .option {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+
+      &__name,
+      &__price {
+        font-size: 14px;
+      }
+
+      &__name {
+        color: var(--coolGray);
+      }
+    }
+  }
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+
+  &__name {
+    font-size: 14px;
+    color: var(--coolGray);
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--purplishBlue);
+  }
+}
+
+// -------------------------- BUTTONS --------------------------
+
+.buttonGroup {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#next {
+  background-color: var(--marineBlue);
+  font-size: 16px;
+  width: 124px;
+  padding: 15px 0;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+#prev {
+  background-color: transparent;
+  font-weight: 500;
+  border: 0;
+  color: var(--coolGray);
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: var(--marineBlue);
+  }
+}
+
+#confirm {
+  background-color: var(--purplishBlue);
+  font-size: 16px;
+  width: 124px;
+  padding: 15px 0;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: var(--pastelBlue);
+  }
+}
+
+// -------------------------- CONFIRMATION --------------------------
+
+.confirmation {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 84px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  &__image {
+    margin-bottom: 8px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--marineBlue);
+  }
+
+  &__text {
+    color: var(--coolGray);
+    text-align: center;
+    line-height: 160%;
+  }
+}
+
+// -------------------------- MEDIA QUERIES --------------------------
+
+@media (max-width: 970px) {
+  .contentBox {
+    gap: 50px;
+  }
+
+  #multistepForm {
+    padding-right: 50px;
+  }
+
+  .confirmation {
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contentBox {
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  // ---------- SIDEBAR
+
+  .sidebar {
+    background: url("../assets/images/bg-sidebar-mobile.svg") top left no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    max-width: 100%;
+    height: 172px;
+    padding: 32px 0;
+
+    .progress {
+      align-items: flex-start;
+
+      &__info {
+        display: none;
+      }
+    }
+  }
+
+  // ------------------ FORM
+
+  #multistepForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+
+    .stepBox {
+      align-items: center;
+    }
+
+    .step {
+      background-color: var(--white);
+      max-width: 343px;
+      margin: -74px 16px 0;
+      padding: 34px 24px 32px;
+      border-radius: 10px;
+      box-shadow: 0 10px 50px 6px hsla(229, 24%, 87%, 0.4);
+
+      h1,
+      .stepTitle {
+        font-size: 24px;
+      }
+
+      .step__text {
+        margin: 8px 0 24px;
+        line-height: 150%;
+      }
+    }
+  }
+
+  // ----------- STEP 1
+
+  .fieldGroup {
+    gap: 15px;
+
+    .labelLine {
+      label {
+        font-size: 12px;
+      }
+
+      .invalid {
+        font-size: 14px;
+      }
+    }
+
+    .inputLine {
+      margin: 4px 0 0;
+
+      input {
+        font-size: 15px;
+        padding: 11px 16px;
+      }
+    }
+  }
+
+  // ----------- STEP 2
+
+  #monthlyOption,
+  #yearlyOption {
+    flex-direction: column;
+  }
+
+  .planSelection {
+    gap: 12px;
+
+    label {
+      .card__container {
+        padding: 16px 14px;
+      }
+
+      .card__content {
+        flex-direction: row;
+        gap: 14px;
+
+        .image {
+          margin-bottom: 0;
+        }
+
+        .card__price {
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+
+  .checkDuration {
+    margin-top: 24px;
+  }
+
+  // ----------- STEP 3
+
+  .addOns {
+    gap: 13px;
+
+    .addonBox {
+      &__wrapper {
+        gap: 16px;
+        padding: 12px 15px;
+      }
+
+      &__service {
+        font-size: 13.5px;
+      }
+
+      &__p {
+        font-size: 12px;
+      }
+
+      &__price {
+        font-size: 12px;
+      }
+    }
+  }
+
+  // ----------- STEP 4
+
+  .summary {
+    padding: 20px 15px;
+
+    .selection {
+      padding-bottom: 12px;
+
+      &__name {
+        font-size: 14px;
+      }
+
+      &__change {
+        margin-top: 2px;
+      }
+    }
+
+    .optionBox {
+      .option {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .totalPrice {
+    padding: 20px 16px 4px;
+
+    &__price {
+      font-size: 16px;
+    }
+  }
+
+  // ----------- BUTTONS
+
+  .buttonGroup {
+    background-color: var(--white);
+    padding: 16px;
+    width: 100%;
+  }
+
+  #next,
+  #confirm {
+    font-size: 14px;
+    width: 97px;
+    padding: 12px 0;
+    border-radius: 4px;
+  }
+
+  #prev {
+    font-size: 14px;
+  }
+
+  // -------------------------- CONFIRMATION --------------------------
+
+  .confirmation {
+    background-color: var(--white);
+    max-width: 343px;
+    height: 400px;
+    margin: -74px 16px 0;
+    padding: 34px 24px 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px 6px hsla(229, 24%, 87%, 0.4);
+
+    &__content {
+      max-width: 343px;
+      gap: 10px;
+    }
+
+    &__image {
+      max-width: 56px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+}
