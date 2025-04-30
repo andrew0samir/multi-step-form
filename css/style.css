@@ -215,7 +215,7 @@ body {
   margin-top: 5px;
   color: var(--coolGray);
 }
-.planSelection label .card__content .monthFree {
+.planSelection label .card__content .monthfree {
   font-size: 12px;
   margin: 8px 0 4px;
   color: var(--marineBlue);
@@ -547,7 +547,7 @@ body {
   #multistepForm .step {
     background-color: var(--white);
     max-width: 343px;
-    margin: -74px 16px 0;
+    margin: -40px 16px 0;
     padding: 34px 24px 32px;
     border-radius: 10px;
     box-shadow: 0 10px 50px 6px hsla(229, 24%, 87%, 0.4);
