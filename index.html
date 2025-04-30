@@ -66,7 +66,7 @@
                 </div>
              </div>
              <!-- from -->
-              <form action="index.html" method="post" id="multistepform">
+              <form action="index.html" method="post" id="multistepForm">
                 <div class="stepBox">
                     <!-- step 1 -->
                      <div class="step" id="step1">
@@ -108,7 +108,7 @@
                             <p class="step__text">You have the option of monthly or yearly billing.</p>
                             <div class="optionDuration">
                                 <!-- monthly option -->
-                                <div class="planSelection" id="monthlyOPtion">
+                                <div class="planSelection" id="monthlyOption">
                                     <label for="radioCard1" class="card">
                                         <input type="radio" name="radioCard" id="radioCard1" class="radioCard" value="1">
                                         <div class="card__container">
@@ -285,8 +285,8 @@
                            </div>
                            <!-- prev / next buttons -->
                             <div class="buttonGroup">
-                                <button type="button" id="prev">Go Back</button>
-                                <button type="button" id="next">Next Step</button>
+                                <button type="button" id="prev" onclick="prevNext(-1)">Go Back</button>
+                                <button type="button" id="next" onclick="prevNext(1)">Next Step</button>
                                 <button type="button" id="confirm">Confirm</button>
                             </div>
                 </div>
